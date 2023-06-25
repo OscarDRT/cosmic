@@ -1,53 +1,56 @@
-import FontAwesome from '@expo/vector-icons/FontAwesome';
-import { Link, Tabs } from 'expo-router';
-import { Pressable, useColorScheme } from 'react-native';
+import { MaterialIcons } from "@expo/vector-icons";
 
-import Colors from '../../constants/Colors';
+import { BlurView } from "expo-blur";
+import { Tabs } from "expo-router";
+import { BottomTabBar } from "@react-navigation/bottom-tabs";
 
-/**
- * You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
- */
 function TabBarIcon(props: {
-  name: React.ComponentProps<typeof FontAwesome>['name'];
+  name: React.ComponentProps<typeof MaterialIcons>["name"];
   color: string;
 }) {
-  return <FontAwesome size={28} style={{ marginBottom: -3 }} {...props} />;
+  return <MaterialIcons size={28} {...props} />;
 }
 
 export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-      }}>
+        tabBarInactiveTintColor: "#8D8E99",
+        tabBarActiveTintColor: "#AE59D2",
+        header: () => null,
+        tabBarShowLabel: false,
+        tabBarStyle: {
+          backgroundColor: "transparent",
+          borderTopColor: "#666666",
+        },
+      }}
+      tabBar={(props) => (
+        <BlurView
+          style={{
+            position: "absolute",
+            bottom: 0,
+            left: 0,
+            right: 0,
+          }}
+          tint="dark"
+          intensity={70}
+        >
+          <BottomTabBar {...props} />
+        </BlurView>
+      )}
+    >
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Tab One',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-          headerRight: () => (
-            <Link href="/modal" asChild>
-              <Pressable>
-                {({ pressed }) => (
-                  <FontAwesome
-                    name="info-circle"
-                    size={25}
-                    color={Colors[colorScheme ?? 'light'].text}
-                    style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
-                  />
-                )}
-              </Pressable>
-            </Link>
-          ),
+          tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />,
         }}
       />
       <Tabs.Screen
         name="two"
         options={{
-          title: 'Tab Two',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          tabBarIcon: ({ color }) => (
+            <TabBarIcon name="favorite" color={color} />
+          ),
         }}
       />
     </Tabs>
