@@ -42,3 +42,11 @@ type DistanceFromSun = {
   value: number;
   unit: string;
 };
+
+type UnitValueType =
+  | Mass
+  | Gravity
+  | Day
+  | EscVelocity
+  | MeanTemp
+  | DistanceFromSun;

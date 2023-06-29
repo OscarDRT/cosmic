@@ -1,6 +1,5 @@
-import { ActivityIndicator, Image, useDripsyTheme, View } from "dripsy";
-import { BlurView } from "expo-blur";
-import { useEffect, useMemo } from "react";
+import { ActivityIndicator, useDripsyTheme, View } from "dripsy";
+import { useMemo } from "react";
 import { AnimatedView } from "../../components/AnimatedView";
 import { Container } from "../../components/Container";
 
@@ -21,7 +20,7 @@ export default function TabOneScreen() {
     [planets]
   );
 
-  const { planet, loading } = useGetPlanet(randomPlanet?.id ?? null);
+  const { planet, loading } = useGetPlanet(randomPlanet?.name ?? null);
 
   return (
     <Container edges={[]}>

@@ -3,6 +3,7 @@ import { MaterialIcons } from "@expo/vector-icons";
 import { BlurView } from "expo-blur";
 import { Tabs } from "expo-router";
 import { BottomTabBar } from "@react-navigation/bottom-tabs";
+import { useDripsyTheme, View } from "dripsy";
 
 function TabBarIcon(props: {
   name: React.ComponentProps<typeof MaterialIcons>["name"];
@@ -12,6 +13,8 @@ function TabBarIcon(props: {
 }
 
 export default function TabLayout() {
+  const { theme } = useDripsyTheme();
+
   return (
     <Tabs
       screenOptions={{
@@ -25,17 +28,21 @@ export default function TabLayout() {
         },
       }}
       tabBar={(props) => (
-        <BlurView
+        <View
           style={{
             position: "absolute",
             bottom: 0,
             left: 0,
             right: 0,
+            overflow: "hidden",
+            borderTopEndRadius: theme.borders.$32,
+            borderTopStartRadius: theme.borders.$32,
           }}
-          intensity={15}
         >
-          <BottomTabBar {...props} />
-        </BlurView>
+          <BlurView intensity={25}>
+            <BottomTabBar {...props} />
+          </BlurView>
+        </View>
       )}
     >
       <Tabs.Screen

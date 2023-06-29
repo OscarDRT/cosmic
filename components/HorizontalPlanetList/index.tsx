@@ -1,5 +1,6 @@
 import { Image, Text, useDripsyTheme, View } from "dripsy";
 import { BlurView } from "expo-blur";
+import { useRouter } from "expo-router";
 import React, { FC, memo, useCallback, useMemo } from "react";
 import { FlatList, Pressable } from "react-native";
 
@@ -13,9 +14,18 @@ export const HorizontalPlanetList: FC<BodyFlatListProps> = memo(
   ({ planets }) => {
     const { theme } = useDripsyTheme();
 
+    const router = useRouter();
+
     const renderItem = useCallback(({ item }: { item: SimplePlanet }) => {
       return (
-        <Pressable>
+        <Pressable
+          onPress={() =>
+            router.push({
+              pathname: `/planets/${item.name}`,
+              params: { image: item.image },
+            })
+          }
+        >
           {({ pressed }) => (
             <View sx={{ borderRadius: theme.borders.$16, overflow: "hidden" }}>
               <BlurView

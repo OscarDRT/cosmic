@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { supabase } from "../lib/supabase";
 
-export const useGetPlanet = (planetId: number) => {
+export const useGetPlanet = (planetName: string) => {
   const [planet, setPlanet] = useState<Planet | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    if (!planetId) return;
+    if (!planetName) return;
     const fetchPlanet = async () => {
       try {
         const { data: planetData, error } = await supabase
@@ -25,7 +25,7 @@ export const useGetPlanet = (planetId: number) => {
             distanceFromSun: DistanceFromSun (value, unit)
           `
           )
-          .eq("id", planetId)
+          .eq("name", planetName)
           .single();
 
         if (error) {
@@ -49,7 +49,7 @@ export const useGetPlanet = (planetId: number) => {
       }
     };
     fetchPlanet();
-  }, [planetId]);
+  }, [planetName]);
 
   return { planet, loading };
 };
