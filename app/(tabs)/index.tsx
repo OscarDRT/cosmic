@@ -1,6 +1,7 @@
 import { ActivityIndicator, Image, useDripsyTheme, View } from "dripsy";
 import { BlurView } from "expo-blur";
 import { useEffect, useMemo } from "react";
+import { AnimatedView } from "../../components/AnimatedView";
 import { Container } from "../../components/Container";
 
 import { Header } from "../../components/Header";
@@ -29,18 +30,32 @@ export default function TabOneScreen() {
       <View sx={{ paddingVertical: "$16", flex: 1 }}>
         {!loading ? (
           <View sx={{ flex: 1 }}>
-            <HorizontalPlanetList planets={planets} />
-            <View
-              sx={{
-                flex: 1,
-                padding: "$16",
-                gap: "$8",
-              }}
+            <AnimatedView
+              from={{ opacity: 0, translateY: -10 }}
+              animate={{ opacity: 1, translateY: 0 }}
+              transition={{ type: "timing", delay: 300 }}
             >
-              <PlanetOfDay planet={planet} />
+              <HorizontalPlanetList planets={planets} />
+            </AnimatedView>
 
-              <SolarSystemDescription />
-            </View>
+            <AnimatedView
+              from={{ opacity: 0, translateY: 10 }}
+              animate={{ opacity: 1, translateY: 0 }}
+              transition={{ type: "timing", delay: 400 }}
+              sx={{ flex: 1 }}
+            >
+              <View
+                sx={{
+                  flex: 1,
+                  padding: "$16",
+                  gap: "$8",
+                }}
+              >
+                <PlanetOfDay planet={planet} />
+
+                <SolarSystemDescription />
+              </View>
+            </AnimatedView>
           </View>
         ) : (
           <View
