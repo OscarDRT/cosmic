@@ -6,7 +6,7 @@ import { Container } from "../../components/Container";
 import { Header } from "../../components/Header";
 import { HorizontalPlanetList } from "../../components/HorizontalPlanetList";
 import { PlanetOfDay } from "../../components/PlanetOfDay";
-import { SolarSystemDescription } from "../../components/PlanetOfDay/SolarSystemDescription";
+import { SolarSystemDescription } from "../../components/SolarSystemDescription";
 import { useGetPlanet } from "../../hooks/useGetPlanet";
 import { useGetPlanets } from "../../hooks/useGetPlanets";
 

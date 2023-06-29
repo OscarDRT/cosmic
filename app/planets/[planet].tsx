@@ -24,7 +24,7 @@ const iconsMapping: { [key: string]: string } = {
 
 const titleMapping: { [key: string]: string } = {
   day: "Day",
-  distanceFromSun: "Distance from sun",
+  distanceFromSun: "Distance",
   escVelocity: "Esc. Velocity",
   gravity: "Gravity",
   mass: "Mass",
@@ -58,7 +58,7 @@ export default function Planet() {
 
       {loading ? (
         <View sx={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-          <ActivityIndicator color={"$primary"} />
+          <ActivityIndicator color={"$primary"} size={"large"} />
         </View>
       ) : (
         <AnimatedView
@@ -113,7 +113,7 @@ export default function Planet() {
                     sx={{
                       width: "33%",
                       alignItems: "center",
-                      justifyContent: "center",
+                      justifyContent: "flex-start",
                     }}
                   >
                     <MaterialCommunityIcons
@@ -128,7 +128,6 @@ export default function Planet() {
                       numberOfLines={2}
                       sx={{
                         textAlign: "center",
-                        height: theme.fontSizes.$16 * 2.5,
                       }}
                       variant={"body"}
                     >{`${titleMapping?.[key]}`}</Text>

@@ -1,12 +1,15 @@
 import { Image, Text, useDripsyTheme, View } from "dripsy";
 import { BlurView } from "expo-blur";
 import { MaterialIcons } from "@expo/vector-icons";
+import { useRouter } from "expo-router";
 
 interface PlanetOfDayProps {
   planet: Planet | null;
 }
 export const PlanetOfDay = ({ planet }: PlanetOfDayProps) => {
   const { theme } = useDripsyTheme();
+
+  const router = useRouter();
 
   if (!planet) return null;
 
@@ -39,6 +42,7 @@ export const PlanetOfDay = ({ planet }: PlanetOfDayProps) => {
             </Text>
             <Text variant={"paragraph"}>{planet?.description}</Text>
             <View
+              onTouchStart={() => router.push(`planets/${planet.name}`)}
               sx={{
                 alignSelf: "flex-end",
                 mt: "$8",
