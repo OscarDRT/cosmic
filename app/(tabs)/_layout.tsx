@@ -32,8 +32,7 @@ export default function TabLayout() {
             left: 0,
             right: 0,
           }}
-          tint="dark"
-          intensity={70}
+          intensity={15}
         >
           <BottomTabBar {...props} />
         </BlurView>

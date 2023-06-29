@@ -1,10 +1,10 @@
+import { View } from "dripsy";
 import { ReactNode } from "react";
 import { ImageBackground } from "react-native";
 import {
   SafeAreaView,
   useSafeAreaInsets,
 } from "react-native-safe-area-context";
-import { View } from "../Themed";
 
 interface containerProps {
   children: ReactNode;
@@ -19,15 +19,13 @@ export const Container = ({
   return (
     <ImageBackground
       style={{ flex: 1 }}
-      imageStyle={{ flex: 1 }}
       resizeMode={"cover"}
       source={require("../../assets/images/background.png")}
     >
       <View
-        lightColor="trasparent"
-        darkColor="trasparent"
         style={[
           {
+            flex: 1,
             paddingTop: edges.includes("top") ? insets.top : 0,
             paddingBottom: edges.includes("bottom") ? insets.bottom : 0,
           },

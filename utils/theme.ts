@@ -4,7 +4,7 @@ export const theme = makeTheme({
   colors: {
     $text: "#ffffff",
     $background: "#000000",
-    $primary: "tomato",
+    $primary: "#11DCE8",
     $transparent: "transparent",
   },
   space: {
@@ -32,12 +32,19 @@ export const theme = makeTheme({
       fontWeight: "bold",
       color: "$text",
     },
-    h1: {
-      fontSize: "$16", // 16px, from `fontSizes` above
+    subtitle: {
+      fontSize: "$18",
+      fontWeight: "bold",
+      color: "$text",
     },
-    p: {
-      fontSize: "$12", // 12px from `fontSizes`
-      mb: "$16", // 16px from `space`
+    body: {
+      fontSize: "$16",
+      fontWeight: "600",
+      color: "$text",
+    },
+    paragraph: {
+      fontSize: "$14",
+      color: "$text",
     },
   },
   borders: {

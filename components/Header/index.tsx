@@ -21,8 +21,7 @@ export const Header = () => {
       }}
     >
       <BlurView
-        tint="dark"
-        intensity={70}
+        intensity={15}
         style={[styles.blur, { paddingTop: insets.top }]}
       >
         <Text variant={"title"}>Solar System</Text>
